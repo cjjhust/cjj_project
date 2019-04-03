@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+   
 ]
 
 ROOT_URLCONF = 'urls'
@@ -138,7 +138,7 @@ if os.getcwd()=='/app':
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
     #  让 request.is_secure() 承认 X-Forwarded-Proto 头
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+   
     #  支持所有的主机头（ host header ）
     ALLOWED_HOSTS = ['*']
 
