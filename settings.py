@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'urls'
@@ -137,11 +138,17 @@ if os.getcwd()=='/app':
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
     #  让 request.is_secure() 承认 X-Forwarded-Proto 头
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     #  支持所有的主机头（ host header ）
     ALLOWED_HOSTS = ['*']
-    #  静态资产配置
+
+#  静态资产配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
+STATIC_URL='/static/'
+os.makedirs(STATIC_TMP, exist_ok=True)
+os.makedirs(STATIC_ROOT, exist_ok=True)
 STATICFILES_DIRS = (
 os.path.join(BASE_DIR, 'static'),
 )
