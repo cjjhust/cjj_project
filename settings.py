@@ -140,8 +140,8 @@ if os.getcwd()=='/app':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
    
    #只允许Heroku托管这个项目
-   ALLOWED_HOSTS=['cjj-eason.herokuapp.com']
-   DEBUG = False
+    ALLOWED_HOSTS=['cjj-eason.herokuapp.com']
+    DEBUG = False
     #  支持所有的主机头（ host header ）
     ALLOWED_HOSTS = ['*']
 
