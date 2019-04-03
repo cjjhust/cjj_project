@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4(j^r(mgpgnlzts(v@m(m0jzw6)d4+pdb(d5uy!y&+b+jg@cx)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -129,10 +129,12 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/users/login/'
 
 #django-bootstrap3的设置
-bootstrap3={'include_jquery':True,}
+BOOTSTRAP3 = {
+    'include_jquery': True,
+    }
 
 #Heroku设置
-#if os.getcwd() == '/app':
+cwd = os.getcwd() 
 if os.getcwd()=='/app':
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
